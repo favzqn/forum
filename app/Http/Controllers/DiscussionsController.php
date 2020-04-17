@@ -4,6 +4,7 @@ namespace LaravelForum\Http\Controllers;
 
 use LaravelForum\Discussion;
 use LaravelForum\User;
+use LaravelForum\Reply;
 use Illuminate\Http\Request;
 use LaravelForum\Http\Requests\CreateDiscussionRequest;
 
@@ -100,5 +101,14 @@ class DiscussionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function reply(Discussion $discussion, Reply $reply)
+    {
+        $discussion->markAsBestReply($reply);
+
+        session()->flash('success','Mark as best reply.');
+
+        return redirect()->back();
     }
 }
