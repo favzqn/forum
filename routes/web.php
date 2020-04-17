@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('discussions', 'DiscussionsController');
+Route::resource('discussions/{discussion}/replies','RepliesController');
