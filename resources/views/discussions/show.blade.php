@@ -48,13 +48,15 @@
                 </div>
 
                 <div>
+                    @auth
                     @if (auth()->user()->id == $discussion->user_id)
-                        <form action="{{ route('discussions.best-reply', ['discussion' => $discussion->slug,
-                        'reply' => $reply->id])}}" method="POST">
-                            @csrf
-                            <button class="btn btn-info text-white btn-sm" type="submit">Mark as best reply</button>
-                        </form>
+                    <form action="{{ route('discussions.best-reply', ['discussion' => $discussion->slug,
+                    'reply' => $reply->id])}}" method="POST">
+                        @csrf
+                        <button class="btn btn-info text-white btn-sm" type="submit">Mark as best reply</button>
+                    </form>
                     @endif
+                    @endauth
                 </div>
             </div>
         </div>
